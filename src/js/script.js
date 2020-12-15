@@ -1,6 +1,7 @@
 const books = Handlebars.compile(document.querySelector('#template-book').innerHTML);
 const booksList = document.querySelector('.books-list');
 const favoriteBooks = [];
+const filtersArray = [];
 
 const renderFunction = () => {
   for (let book of dataSource.books) {
@@ -13,7 +14,6 @@ const renderFunction = () => {
 renderFunction();
 
 const initActions = () => {
-
   booksList.addEventListener('dblclick', event => {
     event.preventDefault();
     const id = event.target.getAttribute('data-id');
@@ -27,6 +27,19 @@ const initActions = () => {
       favoriteBooks.push(id);
     }
   });
+
+  const filters = document.querySelector('.filters');
+  filters.addEventListener('click', event => {
+    if (event.target.tagName === 'INPUT' && event.target.type === 'checkbox' && event.target.name === 'filter') {
+      if (event.target.checked) {
+        filtersArray.push(event.target.value);
+      } else {
+        const index = filtersArray.indexOf(event.target.value);
+        filtersArray.splice(index, 1);
+      }
+      console.log(filtersArray);
+    }
+  })
 };
 
 initActions();

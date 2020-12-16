@@ -38,8 +38,30 @@ const initActions = () => {
         filtersArray.splice(index, 1);
       }
       console.log(filtersArray);
+      filterBooks();
     }
-  })
+  });
+
+  const filterBooks = () => {
+    for (const book of dataSource.books) {
+      let shloudBeHidden = false;
+
+      for (const filter of filtersArray) {
+        if (book.details[filter]) {
+          shloudBeHidden = true;
+          break;
+        }
+      }
+      if (shloudBeHidden) {
+        const madafaka = document.querySelector(`.book__image[data-id="${book.id}"`);
+        madafaka.classList.add('hidden');
+      } else {
+        const madafaka = document.querySelector(`.book__image[data-id="${book.id}"`);
+        madafaka.classList.remove('hidden');
+      }
+
+    }
+  };
 };
 
 initActions();

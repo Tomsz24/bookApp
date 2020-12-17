@@ -54,15 +54,15 @@ class BooksList {
 
   filterBooks() {
     for (const book of this.data) {
-      let shloudBeHidden = false;
+      let shouldBeHidden = false;
 
       for (const filter of this.filtersArray) {
         if (book.details[filter]) {
-          shloudBeHidden = true;
+          shouldBeHidden = true;
           break;
         }
       }
-      if (shloudBeHidden) {
+      if (shouldBeHidden) {
         const madafaka = document.querySelector(`.book__image[data-id="${book.id}"`);
         madafaka.classList.add('hidden');
       } else {

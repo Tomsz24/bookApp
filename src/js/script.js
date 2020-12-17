@@ -63,11 +63,11 @@ class BooksList {
         }
       }
       if (shouldBeHidden) {
-        const madafaka = document.querySelector(`.book__image[data-id="${book.id}"`);
-        madafaka.classList.add('hidden');
+        const img = document.querySelector(`.book__image[data-id="${book.id}"`);
+        img.classList.add('hidden');
       } else {
-        const madafaka = document.querySelector(`.book__image[data-id="${book.id}"`);
-        madafaka.classList.remove('hidden');
+        const img = document.querySelector(`.book__image[data-id="${book.id}"`);
+        img.classList.remove('hidden');
       }
     }
   }
